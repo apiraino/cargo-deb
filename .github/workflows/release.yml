@@ -1,10 +1,6 @@
 name: Release
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [release]
 
 env:
   CARGO_TERM_COLOR: always
@@ -41,5 +37,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_paths: '["./target/debian/cargo-deb*.deb"]'
